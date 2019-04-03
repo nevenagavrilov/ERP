@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>login form</title>
+	<meta name = "viewport" content= "width=device-width, initial-scale=1">
+<style>
+body {font-family: Arival, Helvetica, sans-serif;}
+form {border: 3px solid #f1f1f1;}
+input[type=text] , input[type=password]{
+	width: 200px;
+	padding: 12px 12px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+}
+
+button {
+	background-color: #4CAF50;
+	color: white;
+	padding: 12px 12px;
+	margin: 8px 0;
+	display: inline-block;
+	border: none;
+	cursor: pointer;
+	width: 225px; 
+}
+
+button:hover {
+	opacity: 0.8;
+}
+
+.container {
+	margin-top: 100px;
+	width: 200px;
+	height:200px;
+	display:block;
+	padding:auto;
+	margin:0 auto;
+	text-align:center;
+	padding: 16px;
+	justify-content: center;
+	vertical-align: middle;
+	
+	position: absolute;
+ 	top: 50%;
+ 	left: 50%;
+ 	transform: translate(-50%,-50%);
+}
+
+
+</style>
+</head>
+<body>
+
+	<form>
+		<div id="loginForm" class="container">
+	 			 <label for="uname">Username</label>
+	  			  <input id="usernameField" type="text" placeholder="Enter Username" name="uname" required>
+
+	  			  <label for="psw">Password</label>
+	 			   <input id="passwordField" type="password" placeholder="Enter Password" name="psw" required>
+	 
+	  			  <button id="loginButton" type="submit">Login</button>
+		</div>
+	</form>
+	<script>
+
+
+		$("#login").click(function(){
+			var username = $("#usernameField").val();
+			var password = $("#passwordField").val();
+			$.post('http://localhost:8080/login', {username: username, password: password})
+			.done(function(result) => {
+				console.log(result)// Uspesno ste se ulogovali
+
+			});
+
+		})
+	</script>
+
+</body>
+</html>
